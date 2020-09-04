@@ -1,4 +1,5 @@
 #include "anagram.h"
+using namespace std;
 
 void removeSpace(std::string& w) {
     int count = 0;
@@ -39,9 +40,6 @@ bool Anagram::WordPairIsAnagram(const std::string& word1, const std::string& wor
     
     string_align(w1);
     string_align(w2);
-    
-    if (w1.size() != w2.size())
-        return false;
 
     sort(w1.begin(), w1.end());
     sort(w2.begin(), w2.end());
@@ -51,7 +49,7 @@ bool Anagram::WordPairIsAnagram(const std::string& word1, const std::string& wor
         if (w1[i] != w2[i])
             return false;
     }
-     return  charWiseCompare(w1,w2);
+     return  (w1.size()==w2.size())&&charWiseCompare(w1,w2);
 }
 
 std::vector<std::string> Anagram::SelectAnagrams(
