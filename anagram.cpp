@@ -21,11 +21,21 @@ void string_align(std::string& w) {
 }
 
 
+bool charWiseCompare(const std::string& w1, const std::string& w2) {
+    int size = w1.size();
+    for (int i = 0; i < size; i++) {
+        if (w1[i] != w2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 bool Anagram::WordPairIsAnagram(const std::string& word1, const std::string& word2) {
     //Fill the correct implementation here
     
-    string w1 = word1;
-    string w2 = word2;
+    std::string w1 = word1;
+    std::string w2 = word2;
     
     string_align(w1);
     string_align(w2);
@@ -41,7 +51,7 @@ bool Anagram::WordPairIsAnagram(const std::string& word1, const std::string& wor
         if (w1[i] != w2[i])
             return false;
     }
-    return  true;
+     return  charWiseCompare(w1,w2);
 }
 
 std::vector<std::string> Anagram::SelectAnagrams(
