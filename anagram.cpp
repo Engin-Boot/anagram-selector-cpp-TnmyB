@@ -14,7 +14,7 @@ void removeSpace(std::string& w) {
 
 
 void string_align(std::string& w) {
-    transform(w.begin(), w.end(), w.begin(), ::tolower);
+    std::transform(w.begin(), w.end(), w.begin(), ::tolower);
     
     //removeSpace(w);
     
@@ -45,10 +45,7 @@ bool Anagram::WordPairIsAnagram(const std::string& word1, const std::string& wor
     sort(w2.begin(), w2.end());
     
     int length = w1.size();
-    for (int i = 0; i < length; i++) {
-        if (w1[i] != w2[i])
-            return false;
-    }
+    
      return  (w1.size()==w2.size())&&charWiseCompare(w1,w2);
 }
 
@@ -56,11 +53,12 @@ std::vector<std::string> Anagram::SelectAnagrams(
         const std::string& word,
         const std::vector<std::string>& candidates) {
     //Fill the correct implementation here
-    for (unsigned int i = 0; i < candidates.size();i++) {
-        if (!Anagram::WordPairIsAnagram(word, candidates[i])) {
-            candidates.erase(candidates.begin()+i);
-            i--;
+
+    std::vector<std::string> ans;
+    for (unsigned int i = 0; i < candidates.size(); i++) {
+        if (Anagram::WordPairIsAnagram(word, candidates[i])) {
+            ans.push_back(candidates[i]);
         }
     }
-    return candidates;
+    return ans;
 }
