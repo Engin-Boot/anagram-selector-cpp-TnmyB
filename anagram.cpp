@@ -9,16 +9,17 @@ void removeSpace(std::string& w) {
             count++;
         }
     }
-    w[count] = '\0';
+    w.erase(w.begin()+count,w.end());
+    //w[count] = '\0';
 }
 
 
 void string_align(std::string& w) {
     std::transform(w.begin(), w.end(), w.begin(), ::tolower);
     
-    //removeSpace(w);
+    removeSpace(w);
     
-    w.erase(remove(w.begin(), w.end(), ' '),w.end());
+    //w.erase(remove(w.begin(), w.end(), ' '),w.end());
 }
 
 
