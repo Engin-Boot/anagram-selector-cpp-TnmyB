@@ -17,6 +17,13 @@ TEST_CASE("recognizes anagrams when there are case- and space- differences") {
         == true);
 }
 
+TEST_CASE("recognizes words with non alphabets"){
+    REQUIRE(Anagram::WordPairIsAnagram("McDonald's restaurants", "Uncle Sam's standard rot")
+        == true);
+    REQUIRE(Anagram::WordPairIsAnagram("Church of Scientology", "rich-chosen goofy cult")
+        == true);
+}
+
 TEST_CASE("selects anagrams of a word") {
     auto selection = Anagram::SelectAnagrams("master",
         {"stream", "something", "maters"});
