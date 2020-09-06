@@ -2,24 +2,19 @@
 #include<algorithm>
 using namespace std;
 
-void removeSpace(std::string& w) {
-    int count = 0;
-    for (int i = 0; w[i]; i++) {
-        if (w[i] != ' ') {
-            w[count] = w[i];
-            count++;
+void removeNonChar(string& s){
+    for(unsigned int i=0;i<s.size();i++){
+        if(!isalpha(s[i])){
+            s.erase(s.begin()+i);
+            i--;
         }
     }
-    w.erase(w.begin()+count,w.end());
-    
 }
-
 
 void string_align(std::string& w) {
     transform(w.begin(), w.end(), w.begin(), ::tolower);
+    removeNonChar(w);
     
-    removeSpace(w);
-
 }
 
 
